@@ -1,4 +1,4 @@
-#include"ennemiAI.h"
+#include"ennemiIA.h"
 void initEnnemi(ennemi*e)
 {
 	e->pos.x = 7000;
