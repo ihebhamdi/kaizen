@@ -1,5 +1,5 @@
-#ifndef ENNEMIAI_H_INCLUDED
-#define ENNEMIAI_H_INCLUDED
+#ifndef ENNEMIIA_H_INCLUDED
+#define ENNEMIIA_H_INCLUDED
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -11,7 +11,7 @@
 typedef struct ennemi
 {
 int direction;
-int imag;
+int image;
 SDL_Rect pos;
 SDL_Surface *image[9];
 int etat;

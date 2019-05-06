@@ -1,3 +1,6 @@
+/**  * @file ennemiIA.c  */ 
+
+
 #include"ennemiIA.h"
 void initEnnemi(ennemi*e)
 {
@@ -29,11 +32,11 @@ void iADirection( SDL_Rect *ennemiPosition, SDL_Rect personnagePosition,ennemi*e
     if (ennemiPosition->x < personnagePosition.x)
     {
          ennemiPosition->x= ennemiPosition->x+5;
-	if(e->imag>=8||e->imag<=5)
-	{e->imag=5;}e->imag++;
+	if(e->image>=8||e->image<=5)
+	{e->image=5;}e->image++;
     }
     else if (ennemiPosition->x > personnagePosition.x){
-if(e->imag>=3){e->imag=0;}e->imag++;
+if(e->image>=3){e->image=0;}e->image++;
          ennemiPosition->x-=5;}
 
 }
@@ -62,13 +65,13 @@ if ( a>50 )
     switch (nombreRand){
 case 1:
 
-if(e->imag>=4||e->imag<=0){e->imag=0;}e->imag++;
+if(e->image>=4||e->image<=0){e->image=0;}e->image++;
 
                        e->pos.x-=10;
 
             
       break ;
-case 0 :if(e->imag>=8||e->imag<=5){e->imag=5;}e->imag++;
+case 0 :if(e->image>=8||e->image<=5){e->image=5;}e->image++;
 
                     e->pos.x+=10;
 
