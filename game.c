@@ -1,5 +1,4 @@
 #include"game.h"
-
 void Game_Select_Scene(int* sc)
 {
 (*sc)++;
@@ -9,62 +8,51 @@ void Game_Load_Scene(Game* G)
 { 
 fprintf(stderr,"chargement de la scene \n");
 charge_background(G->sc,&(G->back1));
-charge_background(G->sc,&(G->back2));
+
 
 }
 
 void Game_DisplayGame(Game* G,SDL_Surface *ecran)
 {
 SDL_Rect pos1={0,0};
-SDL_Rect pos2={405,0};
+
 SDL_Rect posr1;
-SDL_Rect posr2;
-G->cam1.camera.w=395;
+
+G->cam1.camera.w=800;
 G->cam1.camera.h=600;
-G->cam2.camera.w=395;
-G->cam2.camera.h=600;
-poscamera(&(G->cam1),G->p1.position ,395,600);
-poscamera(&(G->cam2),G->p2.position ,395,600);
+
+poscamera(&(G->cam1),G->p1.position ,800,600);
+
 
 SDL_Rect posrD;
 
-posrD.x=(G->d.pos.x)-(G->cam1.camera.x);
-posrD.y=(G->d.pos.y)-(G->cam1.camera.y);
+posrD.x=(G->e.pos.x)-(G->cam1.camera.x);
+posrD.y=(G->e.pos.y)-(G->cam1.camera.y);
 
 
 affiche_background(&(G->back1),&pos1,ecran,&(G->cam1.camera));
-affiche_background(&(G->back2),&pos2,ecran,&(G->cam2.camera));
+
 posr1.x=(G->p1.position.x)-(G->cam1.camera.x);
 posr1.y=(G->p1.position.y)-(G->cam1.camera.y);
-posr2.x=(G->p2.position.x)-(G->cam2.camera.x)+400;
-posr2.y=(G->p2.position.y)-(G->cam2.camera.y);
-if (posr1.x>=345)
-{posr1.x=345;}
+
+if (posr1.x>=6000)
+{posr1.x=6000;}
 if (posr1.x<=0)
 {posr1.x=0;}
 if (posr1.y>=550)
 {posr1.y=550;}
 if (posr1.y<=0)
-if (posr2.x>=550)
-{posr2.x=550;}
-if (posr2.x<=405)
-{posr2.x=405;}
-if (posr2.y>=550)
-{posr2.y=550;}
-if (posr2.y<=0)
-{posr2.y=0;}
+{posr1.y=0;}
 displayprince(&(G->p1),&posr1,ecran);
-displayprince(&(G->p2),&posr2,ecran);
-
-//display coins
-//affichercoin (ecran,2,G->c1);
 
 
-//updatedragon(&(G->d) ,ecran, G->p1.position);
-//blit(&(G->d),&posrD,ecran);
+
+
+
+blit(&(G->e),&posrD,ecran);
 
 //int coll=0;
-//deplacer_dragon( &(G->d) ,ecran,G->p1.position); 
+deplacer_ennemi( &(G->e) ,ecran,G->p1.position,&G->coll); 
 
 
 
@@ -73,7 +61,7 @@ displayprince(&(G->p2),&posr2,ecran);
 }
 
 void Game_Init_Scene(Game* G)
-{ SDL_Rect pos1={0,0};
+{ SDL_Rect pos1={400,0};
 SDL_Rect pos2={400,0};
 SDL_Rect pos[2]={{200,0},{300,300}};
 
@@ -86,8 +74,8 @@ initprince(&(G->p1), &pos1);
 initprince(&(G->p2),&pos2);
 
 
-inittableaucoin(G->c1,2,pos);
-initEnnemi(&(G->d));
+
+initEnnemi(&(G->e));
 }
 
 
@@ -136,8 +124,7 @@ free_background(&(G->back1));
 free_background(&(G->back2));
 freeprince(&(G->p1));
 freeprince(&(G->p2));
-//free coins
-freecoin(G->c1,2);
+
 
 //libere (&(G->d));
 

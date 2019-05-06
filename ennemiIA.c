@@ -1,4 +1,13 @@
-/**  * @file ennemiIA.c  */ 
+/**
+* @file ennemiIA.c
+* @brief Init et deplacement de l'ennemi et l'utilisation de l'intelligence artificielle
+* @author Zeineb Karma
+* @version Beta
+* @date Mai 06, 2019
+*
+* 
+*
+*/
 
 
 #include"ennemiIA.h"

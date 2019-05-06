@@ -1,3 +1,17 @@
+/**
+* @file ennemiIA.h
+* @brief Init et deplacement de l'ennemi et l'utilisation de l'intelligence artificielle
+* @author Zeineb Karma
+* @version Beta
+* @date Mai 06, 2019
+*
+* 
+*
+*/
+
+
+
+
 #ifndef ENNEMIIA_H_INCLUDED
 #define ENNEMIIA_H_INCLUDED
 
@@ -18,10 +32,10 @@ int etat;
 
 }ennemi;
 
-void initEnnemi(ennemi*e);//thotha fi l'initialisation
+void initEnnemi(ennemi*e);
 void iADirection( SDL_Rect *ennemiPosition, SDL_Rect personnagePosition,ennemi*e);
-void deplacer_ennemi( ennemi*e ,SDL_Surface*ecran, SDL_Rect pos,int *collision);//thotha fi l update mtaa lgame
-void blit(ennemi*e,SDL_Rect *pos, SDL_Surface* ecran);//thotha fi l'affichage
+void deplacer_ennemi( ennemi*e ,SDL_Surface*ecran, SDL_Rect pos,int *collision);
+void blit(ennemi*e,SDL_Rect *pos, SDL_Surface* ecran);
 int Collision( SDL_Rect box1,SDL_Rect box2);
 
 #endif

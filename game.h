@@ -5,23 +5,24 @@
 #include <SDL/SDL.h>
 #include "background.h"
 #include "prince.h"
-#include "coin.h"
-#include "camera.h"
-#include "ia.h"
+
+#include"camera.h"
+#include"ennemi.h"
  
 typedef struct game
 {
 prince p1;
 prince p2;
-coin c1[2];
+
 //coin c2[10];
 int sc;
 Background back1;
 Background back2;
 Camera cam1,cam2;
+int coll;
 //int score;
 //int time;
-dragon d;
+ennemi e;
 int GameOver;
 }Game;
 //Camera cam;
