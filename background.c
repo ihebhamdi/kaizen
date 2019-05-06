@@ -1,43 +1,33 @@
 #include "background.h"
 
-int loadBackground(Background *Backg)
+
+
+
+void init_background(Background *back)
 {
-	// load background
-	Backg->backgroundImg = SDL_LoadBMP("../images/background.bmp");
-	if (Backg->backgroundImg == NULL) {
-		printf("Unable to load bitmap: %s\n", SDL_GetError());
-		return (-1);
-	}
-
-	Backg->backgroundCollide = SDL_LoadBMP("../images/background.bmp");
-	if (Backg->backgroundCollide == NULL) {
-		printf("Unable to load bitmap: %s\n", SDL_GetError());
-		return (-1);
-	}
-	return (0);
-}
-
-
-void initBackground(Background *Backg)
-{
-	Backg->backgroundPos.x=0;
-	Backg->backgroundPos.y=0;
-	Backg->backgroundPos.w=SCREEN_W;
-	Backg->backgroundPos.h=SCREEN_H;
-}
-
-void blitBackground(Background*Backg,SDL_Surface *screen)
-{
-
-	if(Backg->backgroundPos.x>Backg->backgroundImg->w-SCREEN_W)
-		Backg->backgroundPos.x=0;
-	if(Backg->backgroundPos.x<0)
-		Backg->backgroundPos.x=Backg->backgroundImg->w-SCREEN_W;
-	SDL_BlitSurface(Backg->backgroundImg, &(Backg->backgroundPos), screen,NULL); 
+   back->position.x=0;
+   back->position.y=0;
 
 }
-
-void freeBackground(Background *Backg)
+void charge_background(int scene,Background *back)
 {
-	SDL_FreeSurface(Backg->backgroundImg);
+	
+    	
+	back->background= IMG_Load("baaac.png");
+	//back->backgroundCollision= IMG_Load("../img/Game_Map_3collision.png");
+	
+	
+    
+}
+void affiche_background(Background *back,SDL_Rect *pos,SDL_Surface *ecran,SDL_Rect* camm )
+{
+  	SDL_BlitSurface(back->background,camm, ecran, pos);	
+}
+void free_background(Background *back)
+{
+	if(back->background!=NULL)
+       { SDL_FreeSurface(back->background);}
+	if(back->backgroundCollision!=NULL)
+       { SDL_FreeSurface(back->backgroundCollision);}
+    	
 }
